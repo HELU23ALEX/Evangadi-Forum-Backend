@@ -26,7 +26,7 @@ const register = async (req, res) => {
       return res.status(400).json({ msg: "user already registered" });
     }
 
-    if (password.length < 8) {
+    if (password.length <= 8) {
       return res
         .status(400)
         .json({ msg: "password must be at least 8 characters" });

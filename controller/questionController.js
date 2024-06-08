@@ -1,10 +1,10 @@
-// const uuid = require("uuid");
+const uuid = require("uuid");
 const dbconnection = require("../db/dbConfig");
 
 const askQuestion = async (req, res) => {
-  const { title, description } = req.body;
+  const { title, decription } = req.body;
 
-  if (!title || !description) {
+  if (!title || !decription) {
     return res
       .status(400)
       .json({ msg: "Please provide a title and description for the question" });
@@ -19,8 +19,8 @@ const askQuestion = async (req, res) => {
 
     // Insert the question into the database with the corresponding userid and questionid
     await dbconnection.query(
-      "INSERT INTO questions (questionid, userid, title, description) VALUES (?, ?, ?, ?)",
-      [questionId, userId, title, description]
+      "INSERT INTO questions (questionid, userid, title, decription) VALUES (?, ?, ?, ?)",
+      [questionId, userId, title, decription]
     );
 
     return res.status(201).json({ msg: "Question asked successfully" });
