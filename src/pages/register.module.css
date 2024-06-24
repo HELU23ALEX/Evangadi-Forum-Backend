@@ -61,10 +61,17 @@ body {
   cursor: pointer; /* Set cursor to pointer on hover */
   color: #ccc; /* Adjust color as desired */
 }
+.password_container.active {
+  background-color: #e8f0fe;
+}
 
 #toggle-password.active {
   /* Style for when password is visible */
   color: #000; /* Change color to indicate visibility */
+  /* classes.password_container */
+  .password_container.active {
+    background-color: #e8f0fe;
+  }
 }
 
 .para {

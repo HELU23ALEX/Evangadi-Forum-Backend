@@ -9,6 +9,7 @@ import { FaEye } from "react-icons/fa";
 const Login = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
 
   const navigate = useNavigate();
 
@@ -99,7 +100,8 @@ const Login = () => {
                   className={classes.password_container}
                   style={{
                     outline: "2px solid #ccc",
-                    backgroundColor: "#E8F0FE",
+                    // backgroundColor: "#E8F0FE",
+                    backgroundColor: isFocused ? "#white" : "#E8F0FE",
                     alignItems: "center",
                   }}
                 >
@@ -110,12 +112,14 @@ const Login = () => {
                     id="password-field"
                     style={{
                       border: "none",
+                      backgroundColor: isFocused ? "#white" : "#E8F0FE",
                       // backgroundColor: "white",
                       // backgroundColor: "lightblue",
                       outline: "none",
                       zIndex: "1",
                       // alignItems: "center",
                     }}
+                    onFocus={() => setIsFocused(false)}
                   />
                   <section
                     type="button"

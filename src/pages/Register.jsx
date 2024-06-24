@@ -10,6 +10,7 @@ const Register = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
 
   const usernameDom = useRef();
   const firstnameDom = useRef();
@@ -147,13 +148,14 @@ const Register = () => {
                 </div>
                 <br />
 
-                <div>
+                {/* <div>
                   <span>Password </span>
                   <div
                     className={classes.password_container}
                     style={{
                       outline: "2px solid #ccc",
-                      backgroundColor: "#E8F0FE",
+                      onfocus: ""
+                      // backgroundColor: "#E8F0FE",
                     }}
                   >
                     <input
@@ -181,6 +183,47 @@ const Register = () => {
                       {showPassword ? <FaEyeSlash /> : <FaEye />}{" "}
                       
                     </section>
+                  </div>
+                </div> */}
+
+                <div>
+                  <span>Password </span>
+                  <div
+                    className={classes.password_container}
+                    style={{
+                      outline: "2px solid #ccc",
+                      // outline: isFocused ? "2px solid #ccc" : "2px solid #red",
+                      backgroundColor: isFocused ? "#white" : "#E8F0FE",
+                      // outline: isFocused ? "2px solid #ccc" : "2px solid #red",
+                      //  onFocus={() => setIsFocused(true)}
+                    }}
+                  >
+                    {/* <div> */}
+                    <input
+                      ref={passwordDom}
+                      type={showPassword ? "text" : "password"}
+                      placeholder="password must be at least 8 characters"
+                      id="password-field"
+                      style={{
+                        border: "none",
+                        outline: "#FF0000",
+                        zIndex: "1",
+                        // backgroundColor: "white",
+                        backgroundColor: isFocused ? "#white" : "#E8F0FE", // Dynamic background color
+                      }}
+                      onFocus={() => setIsFocused(false)} // Set focus state on focus
+                      // onBlur={() => setIsFocused(false)} // Reset focus state on blur
+                    />
+                    <section
+                      type="button"
+                      onClick={togglePasswordVisibility}
+                      style={{
+                        color: "black",
+                      }}
+                    >
+                      {showPassword ? <FaEyeSlash /> : <FaEye />}{" "}
+                    </section>
+                    {/* </div> */}
                   </div>
                 </div>
 
